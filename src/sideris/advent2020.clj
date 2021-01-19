@@ -43,7 +43,7 @@
 ;;;; day 7
 
 (defn parse-bag [[quantity col1 col2]]
-  {:quantity (Integer/parseInt quantity)
+  {:quantity (parse-int quantity)
    :color    (str col1 " " col2)})
 
 (defn parse-rule [line]
@@ -91,9 +91,9 @@
     (vec
      (for [line lines]
        (condp #(str/starts-with? %2 %1) line
-         "nop" [:nop (Integer/parseInt (subs line 4))]
-         "acc" [:acc (Integer/parseInt (subs line 4))]
-         "jmp" [:jmp (Integer/parseInt (subs line 4))])))))
+         "nop" [:nop (parse-int (subs line 4))]
+         "acc" [:acc (parse-int (subs line 4))]
+         "jmp" [:jmp (parse-int (subs line 4))])))))
 
 ;; part 1
 
